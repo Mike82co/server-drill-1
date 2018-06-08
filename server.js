@@ -1,6 +1,8 @@
 const express = require ('express');
+const cors = require('cors')
 const app = express();
 const data = require('./cohorts.js') 
+const port = process.env.PORT || 3000;
 
 app.get('/', function(request, response){
     response.json({data: data })
@@ -18,7 +20,7 @@ app.get('/:id', function(request, response){
         response.json({data:cohort})
     }
 })
-app.listen(3000);
+app.listen(port);
 function getCohort(id, dataArr){
 
     for (let i =0 ; i < dataArr.length ; i++){
@@ -29,3 +31,4 @@ function getCohort(id, dataArr){
     }
     return null
 }
+
